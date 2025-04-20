@@ -19,7 +19,6 @@ export const metadata: Metadata = {
 
 export default async function LangLayout({
   children,
-  params,
 }: Readonly<{
   children: React.ReactNode;
   params: { lang: string };

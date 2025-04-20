@@ -22,14 +22,14 @@ export function useTranslation() {
   const t = (key: string): string => {
     // 키가 중첩되어 있는 경우('todo.title'과 같은 형식) 처리
     const keys = key.split('.');
-    let result: any = translations[locale];
+    let result: unknown = translations[locale];
     
     for (const k of keys) {
-      if (typeof result !== 'object' || result?.[k] === undefined) {
+      if (typeof result !== 'object' || result === null || !(k in (result as Record<string, unknown>))) {
         console.warn(`Translation key "${key}" not found for locale "${locale}"`);
         return key;
       }
-      result = result[k];
+      result = (result as Record<string, unknown>)[k];
     }
     
     if (typeof result !== 'string') {
