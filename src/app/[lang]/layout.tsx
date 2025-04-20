@@ -60,6 +60,10 @@ export async function generateMetadata({
       title: `${dict.welcome} - Next.js i18n Example`,
       description: dict.description,
       images: [`${baseUrl}/og-image.png`]
+    },
+    // Google Search Console 확인 코드
+    verification: {
+      google: "nZUr_UG4YlMsL88u3kgYu5j5rNHP-Fr0drPkYUjlxA8"
     }
   };
 }
@@ -72,6 +76,9 @@ export default async function LangLayout({
 }>) {
   return (
     <html>
+      <head>
+        <meta name="google-site-verification" content="nZUr_UG4YlMsL88u3kgYu5j5rNHP-Fr0drPkYUjlxA8" />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
       </body>
