@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://your-deployed-site.vercel.app/sitemap.xml 
