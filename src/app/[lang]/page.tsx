@@ -14,7 +14,10 @@ export async function generateStaticParams() {
 }
 
 export default async function Home({ params }: { params: { lang: string } }) {
-  const dict = await getDictionary(params.lang);
+  // 서버 컴포넌트에서는 async/await 패턴을 사용할 때 params를 직접 접근하기 전에
+  // 그 값을 다른 변수에 할당하면 경고를 방지할 수 있습니다
+  const lang = params.lang;
+  const dict = await getDictionary(lang);
   
   // 언어 선택기에 필요한 번역 데이터 미리 준비
   const languageSwitcherTranslations = {
@@ -51,7 +54,7 @@ export default async function Home({ params }: { params: { lang: string } }) {
         
         <LanguageSwitcher 
           translations={languageSwitcherTranslations} 
-          currentLocale={params.lang} 
+          currentLocale={lang} 
         />
         
         <Todo translations={todoTranslations} />
