@@ -1,0 +1,16 @@
+{
+  "welcome": "ようこそ!",
+  "description": "Next.jsの国際化の例です。",
+  "changeLanguage": "言語を変更",
+  "todo": {
+    "title": "タスクリスト",
+    "add": "タスクを追加",
+    "placeholder": "新しいタスクを入力してください",
+    "empty": "タスクはありません。"
+  },
+  "languages": {
+    "ko": "韓国語",
+    "en": "英語",
+    "ja": "日本語"
+  }
+} 

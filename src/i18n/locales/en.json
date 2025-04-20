@@ -1,0 +1,16 @@
+{
+  "welcome": "Welcome!",
+  "description": "This is an example of internationalization in Next.js.",
+  "changeLanguage": "Change Language",
+  "todo": {
+    "title": "Todo List",
+    "add": "Add Todo",
+    "placeholder": "Enter a new todo",
+    "empty": "No todos yet."
+  },
+  "languages": {
+    "ko": "Korean",
+    "en": "English",
+    "ja": "Japanese"
+  }
+} 

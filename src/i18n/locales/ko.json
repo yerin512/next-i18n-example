@@ -1,0 +1,16 @@
+{
+  "welcome": "환영합니다!",
+  "description": "Next.js에서 국제화를 설정하는 예제입니다.",
+  "changeLanguage": "언어 변경",
+  "todo": {
+    "title": "할 일 목록",
+    "add": "할 일 추가",
+    "placeholder": "새로운 할 일을 입력하세요",
+    "empty": "할 일이 없습니다."
+  },
+  "languages": {
+    "ko": "한국어",
+    "en": "영어",
+    "ja": "일본어"
+  }
+} 
