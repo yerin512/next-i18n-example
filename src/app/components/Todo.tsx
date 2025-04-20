@@ -3,7 +3,12 @@
 import { useState } from 'react';
 
 interface TodoProps {
-  t: (key: string) => string;
+  translations: {
+    title: string;
+    add: string;
+    placeholder: string;
+    empty: string;
+  };
 }
 
 interface TodoItem {
@@ -12,7 +17,7 @@ interface TodoItem {
   completed: boolean;
 }
 
-const Todo: React.FC<TodoProps> = ({ t }) => {
+const Todo: React.FC<TodoProps> = ({ translations }) => {
   const [todos, setTodos] = useState<TodoItem[]>([]);
   const [newTodo, setNewTodo] = useState('');
 
@@ -43,22 +48,22 @@ const Todo: React.FC<TodoProps> = ({ t }) => {
 
   return (
     <div className="todo-container">
-      <h2>{t('todo.title')}</h2>
+      <h2>{translations.title}</h2>
       
       <div className="todo-input">
         <input
           type="text"
           value={newTodo}
           onChange={(e) => setNewTodo(e.target.value)}
-          placeholder={t('todo.placeholder')}
+          placeholder={translations.placeholder}
           onKeyPress={(e) => e.key === 'Enter' && addTodo()}
         />
-        <button onClick={addTodo}>{t('todo.add')}</button>
+        <button onClick={addTodo}>{translations.add}</button>
       </div>
       
       <ul className="todo-list">
         {todos.length === 0 ? (
-          <li className="empty-message">{t('todo.empty')}</li>
+          <li className="empty-message">{translations.empty}</li>
         ) : (
           todos.map((todo) => (
             <li key={todo.id} className={todo.completed ? 'completed' : ''}>

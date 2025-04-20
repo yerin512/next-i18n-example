@@ -4,11 +4,18 @@ import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
 
 interface LanguageSwitcherProps {
-  t: (key: string) => string;
+  translations: {
+    changeLanguage: string;
+    languages: {
+      ko: string;
+      en: string;
+      ja: string;
+    };
+  };
   currentLocale: string;
 }
 
-const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ t, currentLocale }) => {
+const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ translations, currentLocale }) => {
   const router = useRouter();
   
   const changeLocale = useCallback((newLocale: string) => {
@@ -21,25 +28,25 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ t, currentLocale })
 
   return (
     <div className="language-switcher">
-      <div className="language-title">{t('changeLanguage')}:</div>
+      <div className="language-title">{translations.changeLanguage}:</div>
       <div className="language-options">
         <button
           className={`language-option ${currentLocale === 'ko' ? 'active' : ''}`}
           onClick={() => changeLocale('ko')}
         >
-          {t('languages.ko')}
+          {translations.languages.ko}
         </button>
         <button
           className={`language-option ${currentLocale === 'en' ? 'active' : ''}`}
           onClick={() => changeLocale('en')}
         >
-          {t('languages.en')}
+          {translations.languages.en}
         </button>
         <button
           className={`language-option ${currentLocale === 'ja' ? 'active' : ''}`}
           onClick={() => changeLocale('ja')}
         >
-          {t('languages.ja')}
+          {translations.languages.ja}
         </button>
       </div>
       <style jsx>{`

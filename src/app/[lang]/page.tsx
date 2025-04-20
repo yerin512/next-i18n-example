@@ -16,6 +16,24 @@ export async function generateStaticParams() {
 export default async function Home({ params }: { params: { lang: string } }) {
   const dict = await getDictionary(params.lang);
   
+  // 언어 선택기에 필요한 번역 데이터 미리 준비
+  const languageSwitcherTranslations = {
+    changeLanguage: dict.changeLanguage,
+    languages: {
+      ko: dict.languages.ko,
+      en: dict.languages.en,
+      ja: dict.languages.ja
+    }
+  };
+  
+  // Todo 컴포넌트에 필요한 번역 데이터 미리 준비
+  const todoTranslations = {
+    title: dict.todo.title,
+    add: dict.todo.add,
+    placeholder: dict.todo.placeholder,
+    empty: dict.todo.empty
+  };
+  
   return (
     <div className={styles.page}>
       <main className={styles.main}>
@@ -31,27 +49,12 @@ export default async function Home({ params }: { params: { lang: string } }) {
         <h1>{dict.welcome}</h1>
         <p>{dict.description}</p>
         
-        <LanguageSwitcher t={(key) => {
-          const keys = key.split('.');
-          let result: any = dict;
-          
-          for (const k of keys) {
-            result = result[k];
-          }
-          
-          return result;
-        }} currentLocale={params.lang} />
+        <LanguageSwitcher 
+          translations={languageSwitcherTranslations} 
+          currentLocale={params.lang} 
+        />
         
-        <Todo t={(key) => {
-          const keys = key.split('.');
-          let result: any = dict;
-          
-          for (const k of keys) {
-            result = result[k];
-          }
-          
-          return result;
-        }} />
+        <Todo translations={todoTranslations} />
       </main>
       
       <footer className={styles.footer}>

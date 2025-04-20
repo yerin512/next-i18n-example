@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description: "Next.js 국제화 예제 애플리케이션",
 };
 
-export default function LangLayout({
+export default async function LangLayout({
   children,
   params,
 }: Readonly<{
@@ -25,7 +25,7 @@ export default function LangLayout({
   params: { lang: string };
 }>) {
   return (
-    <html lang={params.lang}>
+    <html>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
       </body>
